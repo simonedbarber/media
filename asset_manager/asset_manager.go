@@ -7,10 +7,10 @@ import (
 	"io"
 	"regexp"
 
-	"github.com/jinzhu/gorm"
-	"github.com/qor/admin"
-	"github.com/qor/media/oss"
-	"github.com/qor/qor/resource"
+	"github.com/simonedbarber/admin"
+	"github.com/simonedbarber/media/oss"
+	"github.com/simonedbarber/qor/resource"
+	"gorm.io/gorm"
 )
 
 // AssetManager defined a asset manager that could be used to manage assets in qor admin

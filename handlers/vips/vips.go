@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/disintegration/imaging"
-	"github.com/qor/media"
+	"github.com/simonedbarber/media"
 	"github.com/theplant/bimg"
 )
 

@@ -6,7 +6,7 @@ Media is a [Golang](http://golang.org/) library that supports the upload of *fil
 - optional multiple sizes for each media resource.
 - Accessibility helpers.
 
-[![GoDoc](https://godoc.org/github.com/qor/media?status.svg)](https://godoc.org/github.com/qor/media)
+[![GoDoc](https://godoc.org/github.com/simonedbarber/media?status.svg)](https://godoc.org/github.com/simonedbarber/media)
 
 ###### File Types
 
@@ -20,25 +20,25 @@ Media accepts any and every file type, yet it associates certain file types as *
 
 ## Usage
 
-Media depends on [GORM](https://github.com/jinzhu/gorm) models as it is using [GORM](https://github.com/jinzhu/gorm)'s callbacks to handle file processing, so you will need to register callbacks first:
+Media depends on [GORM](https://gorm.io/gorm) models as it is using [GORM](https://gorm.io/gorm)'s callbacks to handle file processing, so you will need to register callbacks first:
 
 ```go
 import (
-  "github.com/jinzhu/gorm"
-  "github.com/qor/media"
+  "gorm.io/gorm"
+  "github.com/simonedbarber/media"
 )
 
-DB, err = gorm.Open("sqlite3", "demo_db") // [gorm](https://github.com/jinzhu/gorm)
+DB, err = gorm.Open("sqlite3", "demo_db") // [gorm](https://gorm.io/gorm)
 
 media.RegisterCallbacks(DB)
 ```
 
-Then add [OSS(Object Storage Service)](https://github.com/qor/oss) to your model:
+Then add [OSS(Object Storage Service)](https://github.com/simonedbarber/oss) to your model:
 
 ```go
 import (
-  "github.com/jinzhu/gorm"
-  "github.com/qor/media/oss"
+  "gorm.io/gorm"
+  "github.com/simonedbarber/media/oss"
 )
 
 type Product struct {
@@ -61,7 +61,7 @@ oss.Storage := s3.New(s3.Config{AccessID: "access_id", AccessKey: "access_key", 
 
 ## Operate stored files
 
-The [OSS(Object Storage Service)](https://github.com/qor/oss) provides a pretty simple API to operate files on filesytem or cloud storage
+The [OSS(Object Storage Service)](https://github.com/simonedbarber/oss) provides a pretty simple API to operate files on filesytem or cloud storage
 
 ```go
 type StorageInterface interface {
@@ -100,8 +100,8 @@ You can implement the `GetSizes` function to predefine image sizes. The size nam
 
 ```go
 import (
-  "github.com/qor/media/oss"
-  "github.com/jinzhu/gorm"
+  "github.com/simonedbarber/media/oss"
+  "gorm.io/gorm"
 )
 
 type Product struct {
@@ -139,10 +139,10 @@ You can also setup a media library, not use oss.OSS in model directly, then you 
 setup a media library
 ```
 import(
-"github.com/qor/admin"
-"github.com/qor/media/oss"
+"github.com/simonedbarber/admin"
+"github.com/simonedbarber/media/oss"
 "github.com/oss/s3"
-"github.com/qor/media/media_library"
+"github.com/simonedbarber/media/media_library"
 )
 
 db.AutoMigrate(&media_library.MediaLibrary{})
@@ -155,8 +155,8 @@ media.RegisterCallbacks(db)
 use media box in model
 ```
 import(
-"github.com/qor/media/media_library"
-"github.com/qor/media
+"github.com/simonedbarber/media/media_library"
+"github.com/simonedbarber/media
 }
 
 type Product struct {
@@ -204,7 +204,7 @@ for _, path := range []string{"system", "javascripts", "stylesheets", "images"} 
 
 The files under `public` will be exposed to public(especially the search engine!), Imagine someone upload a illegal or sensitive file to your server. The directory is fully visible to everyone and its indexable by search engines and boom!
 
-To avoid this problem, we made a safer `FileServer` function [here](https://github.com/qor/qor/blob/master/utils/utils.go#L176). This function serves file only. So the previous code now turned into:
+To avoid this problem, we made a safer `FileServer` function [here](https://github.com/simonedbarber/qor/blob/master/utils/utils.go#L176). This function serves file only. So the previous code now turned into:
 
 ```go
 for _, path := range []string{"system", "javascripts", "stylesheets", "images"} {

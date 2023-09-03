@@ -15,11 +15,11 @@ import (
 	"testing"
 
 	"github.com/jinzhu/configor"
-	"github.com/jinzhu/gorm"
-	"github.com/qor/media"
-	"github.com/qor/media/oss"
-	"github.com/qor/oss/s3"
-	"github.com/qor/qor/test/utils"
+	"github.com/simonedbarber/media"
+	"github.com/simonedbarber/media/oss"
+	"github.com/simonedbarber/oss/s3"
+	"github.com/simonedbarber/qor/test/utils"
+	"gorm.io/gorm"
 )
 
 var (
